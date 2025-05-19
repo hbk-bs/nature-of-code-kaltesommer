@@ -3,7 +3,8 @@ let numRings = 40;
 let maxRadius; 
 let currentRing = 0;
 let hasStarted = false;
-const MAX_HEIGHT = 600;
+const MAX_HEIGHT = 800;
+let barkPoints = [];
 
 function setup() {
   const h = min(windowHeight, MAX_HEIGHT);
@@ -29,6 +30,7 @@ function setup() {
   } else {
     console.warn("Start button not found.");
   }
+
 }
 
 function draw() {
@@ -49,24 +51,34 @@ function draw() {
   if (currentRing >= numRings) {
     noLoop();
 
+    // Bark edge
     let outerRing = rings[rings.length - 1];
-    for (let pt of outerRing.points) {
-      push();
-      
-      translate(pt.x, pt.y);
+    let barkThickness = 40;
 
-     
-      let angleFromCenter = atan2(pt.y, pt.x);
+    beginShape();
+    stroke(60, 40, 20, 220); // Dark brown stroke
+    // fill(120, 70, 40, 100);
+    strokeWeight(4);
+    
+    for (let i = 0; i < outerRing.points.length; i++) {
+      let pt = outerRing.points[i];
 
-      
-      rotate(angleFromCenter);
+      // Vector from center to this point
+      let dir = createVector(pt.x, pt.y).normalize();
 
-     
-      drawTree(25, 0, 4); 
-      pop();
+      // Bark offset in direction away from center
+      let offset = map(random(i * 0.1), 0, 1, barkThickness * 0.6, barkThickness);
+      let x = pt.x + dir.x * offset;
+      let y = pt.y + dir.y * offset;
+
+      vertex(x, y);
     }
+
+    endShape(CLOSE);
+
   }
 }
+
 
 class Ring {
   constructor(index) {
@@ -100,22 +112,22 @@ class Ring {
   }
 }
 
-function drawTree(len, angle, depth) {
-  if (depth === 0) return;
+// function drawTree(len, angle, depth) {
+//   if (depth === 0) return;
 
-  let x2 = len * cos(angle);
-  let y2 = len * sin(angle);
+//   let x2 = len * cos(angle);
+//   let y2 = len * sin(angle);
 
-  stroke(60, 40, 20, 150);
-  strokeWeight(map(depth, 0, 6, 0.5, 2));
-  line(0, 0, x2, y2);
+//   stroke(60, 40, 20, 150);
+//   strokeWeight(map(depth, 0, 6, 0.5, 2));
+//   line(0, 0, x2, y2);
 
-  push();
-  translate(x2, y2);
-  drawTree(len * 0.6, angle - random(15, 25), depth - 1);
-  drawTree(len * 0.6, angle + random(15, 25), depth - 1);
-  pop();
-}
+//   push();
+//   translate(x2, y2);
+//   drawTree(len * 0.6, angle - random(15, 25), depth - 1);
+//   drawTree(len * 0.6, angle + random(15, 25), depth - 1);
+//   pop();
+// }
 
 function windowResized() {
   const h = min(windowHeight, MAX_HEIGHT);
