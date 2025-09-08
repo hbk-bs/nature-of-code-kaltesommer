@@ -41,15 +41,6 @@ main {
 #startButton:hover {
   background-color: #406635;
 }
-
-/* .boom {
-  margin-bottom: 20px;
-  position: relative;
-  max-width: 250px;
-  height: auto;
-  align-self: center;
-}
- */
 .source-link {
   margin-top: 10px;
   color: #4b3f2f;

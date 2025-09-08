@@ -111,7 +111,7 @@ class Ring {
     endShape(CLOSE);
   }
 }
-
+// for mini trees that should look like oak 
 // function drawTree(len, angle, depth) {
 //   if (depth === 0) return;
 
