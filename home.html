@@ -25,10 +25,7 @@
       </div>
     </div>
     <p> 1. Wie es funktioniert: Am Anfang definiere ich einige Variablen:
-
-        rings ist eine Liste, in der alle Baumringe gespeichert werden.
-    
-        *numRings* gibt an, wie viele Ringe entstehen sollen.
+      rings ist eine Liste, in der alle Baumringe gespeichert werden. numRings gibt an, wie viele Ringe entstehen sollen.
     
         maxRadius bestimmt, wie groß der äußerste Ring wird.
     
@@ -40,7 +37,7 @@
     Wichtig ist hier: Ich verwende noLoop(), damit der Sketch nicht ständig neu gezeichnet wird – das mache ich manuell.
     Außerdem verknüpfe ich einen Start-Button, damit der Nutzer die Animation selbst starten kann.
       </p>
-      <p>2.Die draw()-Funktion: So wachsen die Ringe.
+      <p>2. Die draw()-Funktion: So wachsen die Ringe.
 
         Sobald man den Button klickt, wird hasStarted auf true gesetzt, und dann beginnt die Zeichnung im draw().
         
@@ -61,7 +58,7 @@
             Die kleinen Bäume werden durch eine rekursive Funktion erzeugt.
             Sie zeichnet einen Hauptast, und dann zwei kleinere Äste, die sich im Winkel unterscheiden.
             Das Ganze wiederholt sich mehrere Male – dadurch entsteht fraktales Wachstum, das wir bei echten Bäumen oder Pflanzen finden.</p>
-    <p> Last and least:
+    <p> Last but not least:
         6. Fensteranpassung & Bedienung.
         Wenn das Fenster neu geladen oder in der Größe verändert wird, passt sich das Canvas automatisch an. So bleibt das Ganze auf allen Geräten gut sichtbar.
     </p>

@@ -6,6 +6,7 @@ let hasStarted = false;
 const MAX_HEIGHT = 800;
 let barkPoints = [];
 
+
 function setup() {
   const h = min(windowHeight, MAX_HEIGHT);
   let cnv = createCanvas(windowWidth, h);
