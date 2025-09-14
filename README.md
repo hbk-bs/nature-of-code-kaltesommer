@@ -1,61 +1,68 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/fZw3wUis)
-# digicom 2025 Excursion Nature of Code
+# Nature of Code
 
-# Excursion Briefing: Observing & Coding Nature
+This project is about observing **patterns, behaviors, and systems in nature** and translating them into a digital sketch.  
+I focused on **tree rings**: each ring represents a year in the tree’s life.  
+The result is a short animation built with **p5.js**.
 
-  Based on https://natureofcode.com/ by Daniel Shiffmann 
+---
 
-## Objective
+## Preview
 
-During our excursion to the island, your task is to closely observe patterns, behaviors, and systems in nature. These can include the movement of birds or insects, wave patterns, plant growth, weather changes, animal flocking, erosion, or other emergent phenomena.
+![Tree Rings](Tree+rings-+LaurieKehler.jpg)  
+![Child Holding Ring](kid-ring.jpg)
 
-  
+---
 
-## Your Mission:
+## How it works
 
-### 1. Observe
+1. **Setup**  
+   - `rings`: list of all generated tree rings  
+   - `numRings`: number of rings to draw  
+   - `maxRadius`: size of the outermost ring  
+   - `currentRing`: keeps track of which ring is drawn  
+   - `hasStarted`: controls whether the sketch has started  
 
-- Spend time in nature.
-- Watch how things move, grow, repeat, or interact.
-- Focus on patterns that emerge over time or through interaction.
+   In `setup()` the canvas is created and initialized.  
+   `noLoop()` ensures the sketch doesn’t redraw continuously.  
+   A **Start button** allows the user to trigger the animation.
 
-### 2. Document
+2. **draw() – Growing rings**  
+   When the button is clicked, `hasStarted` becomes `true`.  
+   Each frame creates a new ring shaped with **Perlin Noise** for irregular, organic growth.  
+   Previously drawn rings remain visible, so the growth accumulates naturally.
 
-- Take notes, sketches, videos, or photos.
-- Describe what you see in simple terms (e.g. "many birds change direction together", "branches grow in spirals").
-- Think about what rules might be behind the behavior.
+3. **Stopping the loop**  
+   Once all rings are drawn, the loop stops.  
+   At the edge of the outer ring, the recursive function `drawTree()` draws branching structures.
 
-### 3. Translate to Code
+4. **The Ring class**  
+   Each ring is an instance of the `Ring` class.  
+   A circle is generated with its radius distorted by **Perlin Noise**, making it look natural and irregular like real tree rings.
 
-- After returning, choose one observation.
-- Create a p5.js sketch that simulates the behavior or structure you observed.
-- Use code as a tool to understand, model, and reimagine natural processes.
+5. **drawTree(): Fractal growth**  
+   This recursive function draws a main branch, then two smaller angled branches.  
+   Repeated over several iterations, this produces **fractal growth** similar to real trees.
 
-  
+6. **Responsiveness**  
+   On window resize or reload, the canvas automatically adjusts.  
+   This ensures good visibility across devices.
 
-## Tips
+---
 
-- Don't aim for realism--aim for logic.
-- Focus on the rules behind the patterns.
-- Think in terms of systems, repetition, randomness, and interaction.
-- Remember you can use AI to generate the code but you still need to understand it (let AI explain it)
-- Remember to add a LICENSE file to your repository
-- Make sure to add a README.md file to your repository
+## Run the Sketch
 
-  
+Open the result here:  
+👉 [zum Ergebnis](rings.html)
 
-## Deliverable
+---
 
-- A short blog-style documentation (with images/video)
-- A p5.js sketch simulating your chosen natural pattern
-- A reflection on what you observed and how you interpreted it
+## Tech Stack
 
+- [p5.js](https://p5js.org/)  
+- HTML5 / CSS3  
 
+---
 
-## Starter Code
+## Author
 
-The repo  contains a basic p5.js template and a index.md file. You could start writing your document in the index.md file and convert it to html with the https://marketplace.cursorapi.com/items?itemName=fmoronzirfas.markdown-to-html extension. You can also have HTML in that file. 
-
-
-
-
+Project created as part of a study assignment on **digital communication & creative coding**.
